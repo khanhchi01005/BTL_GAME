@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1715308737 source:c:\users\admin\desktop\cpp\btl_game\dinasour\main.cpp
+	"graphics1.h"
+	"defs.h"
+	"game.h"
+
+1715308739 c:\users\admin\desktop\cpp\btl_game\dinasour\graphics1.h
+	"defs.h"
+	<vector>
+
+1715308734 c:\users\admin\desktop\cpp\btl_game\dinasour\defs.h
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1715308662 c:\users\admin\desktop\cpp\btl_game\dinasour\game.h
+	"defs.h"
+	"graphics1.h"
+
