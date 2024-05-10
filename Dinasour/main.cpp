@@ -31,11 +31,6 @@ int main(int argc, char* argv[]) {
     graphics.renderTexture(helloText, 200, 200);
     */
 
-
-
-
-
-
     ScrollingBackground background;
     background.setTexture(graphics.loadTexture("images/try.jpg"));
 

@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1715308737 source:c:\users\admin\desktop\cpp\btl_game\dinasour\main.cpp
+1715309757 source:c:\users\admin\desktop\cpp\btl_game\dinasour\main.cpp
 	"graphics1.h"
 	"defs.h"
 	"game.h"
 
-1715308739 c:\users\admin\desktop\cpp\btl_game\dinasour\graphics1.h
+1715309758 c:\users\admin\desktop\cpp\btl_game\dinasour\graphics1.h
 	"defs.h"
 	<vector>
 

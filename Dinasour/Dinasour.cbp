@@ -32,7 +32,21 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="DEMO.h" />
+		<Unit filename="DEMO2.h" />
+		<Unit filename="copygra.h" />
+		<Unit filename="copymain.h" />
+		<Unit filename="defs.h" />
+		<Unit filename="ex.h" />
+		<Unit filename="game.h" />
+		<Unit filename="gameloop.h" />
+		<Unit filename="graphics.h" />
+		<Unit filename="graphics1.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="motion.h" />
+		<Unit filename="not2.h" />
+		<Unit filename="note.h" />
+		<Unit filename="note3.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
