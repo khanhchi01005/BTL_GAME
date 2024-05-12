@@ -3,8 +3,13 @@
 #define _GRAPHICS__H
 
 #include "defs.h"
+#include "graphics.h"
 #include <vector>
 
+
+TTF_Font* font = graphics.loadFont("fonts/purisa.ttf", 40);
+SDL_Color color = {255, 255, 0, 0};
+SDL_Texture* helloText;
 
 
 //NHAN VAT
@@ -26,10 +31,18 @@ struct Sprite {
 
             clips.push_back(clip);
         }
+
+
     }
     void tick() {
-        currentFrame = (currentFrame + 1) % clips.size();
+       currentFrame = (currentFrame + 1) % clips.size();
     }
+    void bat_tick(){
+        currentFrame = (currentFrame + 1) % clips.size();
+
+}
+
+
 
     const SDL_Rect* getCurrentClip() const {
         return &(clips[currentFrame]);
@@ -87,13 +100,10 @@ struct Graphics {
             logErrorAndExit( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
         }
 
-       /*if (TTF_Init() == -1) {
+       if (TTF_Init() == -1) {
             logErrorAndExit("SDL_ttf could not initialize! SDL_ttf Error: ",
                              TTF_GetError());
         }
-        */
-
-
 
     }
 
@@ -151,6 +161,9 @@ struct Graphics {
     void renderback(const ScrollingBackground& background) {
         renderTexture(background.texture, background.scrollingOffset, 0);
         renderTexture(background.texture, background.scrollingOffset - background.width, 0);
+        helloText = graphics.renderText("Hello", font, color);
+        graphics.renderTexture(helloText, 200, 200);
+        graphics.presentScene();
     }
     SDL_Renderer* getRenderer() {
     return renderer;
@@ -159,6 +172,7 @@ struct Graphics {
     void quit()
     {
         IMG_Quit();
+        TTF_Quit();
 
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
@@ -225,13 +239,6 @@ struct Graphics {
         SDL_FreeSurface( textSurface );
         return texture;
     }
-
-
-
-
-
-
-
 };
 
 #endif // _GRAPHICS__H

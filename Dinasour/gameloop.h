@@ -1,10 +1,7 @@
 #ifndef _GAMELOOP__H
 #define _GAMELOOP__H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include "defs.h"
-#include <iostream>
 #include "graphics1.h"
 
 // Game loop

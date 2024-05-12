@@ -1,10 +1,5 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <cstdlib> 
-#include <ctime> 
-#include "graphics1.h"
 #include "defs.h"
+#include "graphics1.h"
 #include "game.h"
 
 using namespace std;
@@ -12,10 +7,10 @@ using namespace std;
 bool CheckCollision(const SDL_Rect& rect1, const SDL_Rect& rect2) {
     // Check for x-axis overlap
     bool xOverlap = rect1.x + rect1.w >= rect2.x && rect2.x + rect2.w >= rect1.x;
-    
+
     // Check for y-axis overlap
     bool yOverlap = rect1.y + rect1.h >= rect2.y && rect2.y + rect2.h >= rect1.y;
-    
+
     // Return true if both x-axis and y-axis overlap
     return xOverlap && yOverlap;
 }

@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1715361645 source:c:\users\admin\desktop\cpp\btl_game\dinasour\main.cpp
+	"graphics1.h"
+	"defs.h"
+	"game.h"
+
+1715412309 c:\users\admin\desktop\cpp\btl_game\dinasour\graphics1.h
+	"defs.h"
+	<vector>
+
+1715350351 c:\users\admin\desktop\cpp\btl_game\dinasour\defs.h
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1715351446 c:\users\admin\desktop\cpp\btl_game\dinasour\game.h
+	"defs.h"
+	"graphics1.h"
+
+1715446633 source:c:\users\admin\desktop\cpp\btl_game\dinasour - remake\main.cpp
+	"graphics1.h"
+	"defs.h"
+	"game.h"
+
+1715424342 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\graphics1.h
+	"defs.h"
+	"graphics.h"
+	<vector>
+
+1715438597 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\defs.h
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<cstring>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1715318020 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\graphics.h
+	"defs.h"
+
+1715418278 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\game.h
+	"defs.h"
+	"graphics1.h"
+

@@ -1,6 +1,4 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+
 #include "graphics.h"
 #include "defs.h"
 #include "sprite.h"
@@ -22,13 +20,13 @@ int main(int argc, char *argv[])
 
     Trex trex;
     Cactus cactus;
-     
+
      // Set initial positions
     trex.position.x = SCREEN_WIDTH / 4;
     trex.position.y = SCREEN_HEIGHT - GROUND_HEIGHT - TREX_HEIGHT;
     cactus.position.x = SCREEN_WIDTH;
     cactus.position.y = SCREEN_HEIGHT - GROUND_HEIGHT - CACTUS_HEIGHT;
-     
+
 
      // Game variables
      bool quit = false;
@@ -88,11 +86,11 @@ int main(int argc, char *argv[])
             }
 
 
-        
+
     }
-    
-    
-    
+
+
+
     SDL_DestroyTexture( background.texture );
     background.texture =NULL;
    SDL_DestroyTexture(bird);

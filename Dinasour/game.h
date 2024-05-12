@@ -1,16 +1,16 @@
 #ifndef GAME_H
 #define GAME_H
+
 #include "defs.h"
 #include "graphics1.h"
-#define INITIAL_SPEED 20
+#define INITIAL_SPEED 30
 
 int trexX=SCREEN_WIDTH/6;
 int trexY = SCREEN_HEIGHT-GROUND_HEIGHT-T_REX_HEIGHT;
 int dx=0,dy=0;
 int speed =INITIAL_SPEED;
 bool isJumping = false;
-Uint32 frameStart;
-int frameTime;
+
 
 void move() {
     if (isJumping) {
@@ -20,7 +20,7 @@ void move() {
             isJumping = false; // T-Rex finishes jumping
             dy = 0; // Reset vertical velocity
         } else {
-            dy+=4; // Apply gravity
+            dy+=2; // Apply gravity
             // if i apply dy+=4 , i falls faster
         }
     }

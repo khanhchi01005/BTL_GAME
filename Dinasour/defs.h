@@ -19,9 +19,9 @@ const int CACTUS_HEIGHT = /*50*/ 70;
 const int CACTUS_WIDTH = /*20*/ 70;
 const int BIRD_WIDTH = 30;
 const int BIRD_HEIGHT = 30;
-const int JUMP_FORCE =50;
-const int FRAME_RATE = 30;
-const int FRAME_DELAY = 1000/FRAME_RATE;
+const int JUMP_FORCE = /*50*/ 30;
+const int FRAME_RATE = 10;
+const int FRAME_DELAY = 1000 / FRAME_RATE;
 
 const char* WINDOW_TITLE = "Game Project";
 
@@ -40,18 +40,18 @@ const int T_REX_CLIPS[][4] = {
     { 60, 0, 57, 68},
     {115, 0, 57, 68},
     {174, 0, 57, 68},
-    {233,0,57,68},
-    {295,0,57,68},
+    {233, 0, 57, 68},
+    {295, 0, 57, 68},
 };
 const int T_REX_FRAMES = sizeof(T_REX_CLIPS)/sizeof(int)/4;
 
-const char* BIRD_FILE = "img/bird.png";
+const char* BIRD_FILE = "img/bat.png";
 const int BIRD_CLIPS[][4]={
-    {0,0,30,40},
-    {35,0,30,40},
-    {67,0,30,40},
-    {97,0,30,40},
-    {129,0,30,40},
+    {  0, 0, 30, 40},
+    { 33, 0, 30, 40},
+    { 65, 0, 30, 40},
+    { 95, 0, 30, 40},
+    {126, 0, 30, 40},
 };
 const int BIRD_FRAMES = sizeof(BIRD_CLIPS)/sizeof(int)/4;
 

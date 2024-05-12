@@ -1,10 +1,4 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_ttf.h>
-#include <cstdlib> 
-#include <ctime> 
+
 #include "graphics1.h"
 #include "defs.h"
 #include "game.h"
@@ -22,7 +16,7 @@ int main(int argc, char* argv[]) {
     Graphics graphics;
     graphics.init();
 
-    
+
     Mix_Music *gMusic = graphics.loadMusic("assets\\RunningAway.mp3");
     graphics.play(gMusic);
 

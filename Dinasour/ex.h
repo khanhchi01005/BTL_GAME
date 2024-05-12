@@ -1,6 +1,4 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include "defs.h"
 
 // Constants
 const int SCREEN_WIDTH = 800;

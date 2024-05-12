@@ -1,10 +1,8 @@
 #ifndef _GRAPHICS__H
 #define _GRAPHICS__H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include "defs.h"
-#include <iostream>
+
 using namespace std;
 
 struct ScrollingBackground {
@@ -25,7 +23,7 @@ struct ScrollingBackground {
 struct Graphics {
     SDL_Renderer *renderer;
 	SDL_Window *window;
-   
+
 	void logErrorAndExit(const char* msg, const char* error)
     {
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "%s: %s", msg, error);
@@ -44,7 +42,7 @@ struct Graphics {
 
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED |
                                               SDL_RENDERER_PRESENTVSYNC);
-       
+
 
         if (renderer == nullptr) logErrorAndExit("CreateRenderer", SDL_GetError());
 

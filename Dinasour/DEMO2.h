@@ -1,10 +1,5 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <cstdlib>
-#include <ctime>
-#include "graphics1.h"
 #include "defs.h"
+#include "graphics1.h"
 #include "game.h"
 
 using namespace std;

@@ -1,6 +1,6 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#ifndef NOTE_H
+#define NOTE_H
+
 #include "graphics.h"
 #include "defs.h"
 
@@ -40,14 +40,14 @@ int main(int argc, char *argv[])
         graphics.presentScene();
         SDL_Delay(100);
     }
-    
+
     //SDL_Texture* bird = graphics.loadTexture("images/bird(1).png");
    // graphics.renderTexture(bird, 200, 200);
 
 	//graphics.presentScene();
-    
+
 	//waitUntilKeyPressed();
-    
+
     SDL_DestroyTexture( background.texture );
     background.texture =NULL;
    SDL_DestroyTexture(bird);
@@ -55,3 +55,5 @@ int main(int argc, char *argv[])
     graphics.quit();
     return 0;
 }
+
+#endif // NOTE_H
