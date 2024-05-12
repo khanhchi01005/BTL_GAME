@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
+#include <algorithm>
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -24,6 +25,10 @@ const int JUMP_FORCE = /*50*/ 30;
 const int FRAME_RATE = 10;
 const int FRAME_DELAY = 1000 / FRAME_RATE;
 int score =0;
+bool GameOver = false;
+
+
+
 
 const char* WINDOW_TITLE = "Game Project";
 

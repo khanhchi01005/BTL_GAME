@@ -28,7 +28,6 @@ struct Sprite {
             clips.push_back(clip);
         }
 
-
     }
     void tick() {
        currentFrame = (currentFrame + 1) % clips.size();
@@ -37,9 +36,6 @@ struct Sprite {
         currentFrame = (currentFrame + 1) % ( clips.size());
 
 }
-
-
-
     const SDL_Rect* getCurrentClip() const {
         return &(clips[currentFrame]);
     }

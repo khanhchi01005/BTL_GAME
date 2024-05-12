@@ -5,8 +5,9 @@
 using namespace std;
 
 bool isPlaying = false;
+
 void drawBoundingBox(SDL_Renderer* renderer, const SDL_Rect& rect) {
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Set the color to red
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Set the color to red
     SDL_RenderDrawRect(renderer, &rect); // Draw the rectangle
 }
 void waitUntilKeyPressed()
@@ -23,9 +24,8 @@ void waitUntilKeyPressed()
 int main(int argc, char* argv[]) {
    Graphics graphics;
     graphics.init();
-    bool isPlaying = false;
-    bool quit = false;
     SDL_Event e;
+    bool quit =false;
     TTF_Font* font = graphics.loadFont("fonts/purisa.ttf", 35);
     SDL_Color color = {0, 0, 0, 255};
 
@@ -55,11 +55,12 @@ int main(int argc, char* argv[]) {
     graphics.renderTexture(Help, 330, 410);
     SDL_Rect helpBox = {250, 410, 250, 50};
     drawBoundingBox(graphics.getRenderer(), helpBox);
-
     graphics.presentScene();
 
+
+
     while (!quit) {
-        while (SDL_PollEvent(&e) != 0) {
+        while (SDL_PollEvent(&e)!=0) {
             if (e.type == SDL_QUIT) {
                 quit = true;
             }else if (e.type == SDL_MOUSEBUTTONDOWN) {
@@ -68,6 +69,7 @@ int main(int argc, char* argv[]) {
 // Vao choi game
                 if (mouseX >= newGameBox.x && mouseX < newGameBox.x + newGameBox.w &&
                     mouseY >= newGameBox.y && mouseY < newGameBox.y + newGameBox.h) {
+                    //GameOver = false;
                     isPlaying = true;
                     quit=true;
                 }
@@ -82,13 +84,27 @@ int main(int argc, char* argv[]) {
                     quit=true;
                 }
 
-
             }
         }
 }
 
 
 if(isPlaying){
+    bool quit =false;
+
+    int randomX;
+    int lastCactus = SDL_GetTicks();
+    int lastBird =0;
+    int Gap = 500;
+
+
+
+     // Store the positions of cacti and their collision rectangles
+    vector<int> cactusX;
+    vector<SDL_Rect> cactusRects;
+    vector<int> birdX;
+    vector<SDL_Rect> birdRects;
+
     Mix_Music *gMusic = graphics.loadMusic("music/subway.ogg");
     graphics.play(gMusic);
     Mix_Chunk *gJump = graphics.loadSound("music/jump.wav");
@@ -116,25 +132,54 @@ if(isPlaying){
     const char* currentScore = ScurrentScore.c_str();
     printScore = graphics.renderText(currentScore, font, color);
 
-    bool quit = false;
-    bool isDead = false;
-    SDL_Event e;
-    int threshold =200;
-    int increase=1;
-    int cactusSpeed = 15;
-    int birdSpeed = 15;
-    int X1_axis,X2_axis=0;
-    int randomX;
 
-    // Store the positions of cacti and their collision rectangles
-    vector<int> cactusX;
-    vector<SDL_Rect> cactusRects;
 
-    vector<int> birdX;
-    vector<SDL_Rect> birdRects;
+    while (!quit) {
+        // Hien thi lua chon sau khi thua
+        if(GameOver){
+        // Ve New Game hoac Exit
+                graphics.renderTexture(newGame, 270, 250);
+                drawBoundingBox(graphics.getRenderer(), newGameBox);
+                graphics.renderTexture(Exit, 330, 330);
+                drawBoundingBox(graphics.getRenderer(), exitBox);
+        //Ve diem sau khi thua
+                TTF_Font* font = graphics.loadFont("fonts/purisa.ttf",55 );
+                SDL_Color color = {0, 0, 0, 255};
+                SDL_Texture* AfterScore = graphics.renderText(currentScore, font, color);
+                graphics.renderTexture(AfterScore, 200, 150);
 
-    while (!quit && !gameOver(trexX, trexY)) {
-        // Handle events
+                graphics.presentScene();
+            while(SDL_PollEvent(&e)!=0){
+                if(e.type==SDL_QUIT){
+                    quit = true;
+                }
+                else if(e.type == SDL_MOUSEBUTTONDOWN){
+                        int mouseX, mouseY;
+                SDL_GetMouseState(&mouseX, &mouseY);
+            // Vao choi game
+                if (mouseX >= newGameBox.x && mouseX < newGameBox.x + newGameBox.w &&
+                    mouseY >= newGameBox.y && mouseY < newGameBox.y + newGameBox.h) {
+
+                    for (int i = 0; i < cactusX.size(); ++i) {
+                    cactusX[i] =800 ;
+                    cactusRects[i].x = cactusX[i];
+                    graphics.renderTexture(cactusTexture, cactusX[i], 390);
+
+                }
+
+
+
+                    GameOver = false;
+
+                }
+//Thoat game ra
+                if (mouseX >= exitBox.x && mouseX < exitBox.x + exitBox.w &&
+                    mouseY >= exitBox.y && mouseY < exitBox.y + exitBox.h) {
+                    quit=true;
+                }
+                }
+            }
+        }
 
 
         while (SDL_PollEvent(&e) != 0) {
@@ -154,95 +199,100 @@ if(isPlaying){
             graphics.play(gJump);
         }
 
-        if (!gameOver(trexX, trexY)) {
-          move();
 
-        srand(time(0));
+        if (!GameOver) {
+            move();
 
-           int Gap = 500;
-          // int birdGap = 500;
+            srand(time(0));
 
-    if (cactusX.empty() || cactusX.back() <= SCREEN_WIDTH - Gap) {
-        randomX = rand() % (SCREEN_WIDTH - Gap) + SCREEN_WIDTH;
-        cactusX.push_back(randomX); // Add a new cactus at the right edge of the screen
-        SDL_Rect cactusRect = { cactusX.back(), 440, CACTUS_WIDTH, CACTUS_HEIGHT };
-        cactusRects.push_back(cactusRect);
-    }
-    else if (birdX.empty() || birdX.back() <= SCREEN_WIDTH - Gap) {
-
-        birdX.push_back(randomX); // Add a new bird at the right edge of the screen
-        SDL_Rect birdRect = { birdX.back() , 310, BIRD_WIDTH, BIRD_HEIGHT };
-        birdRects.push_back(birdRect);
-    }
-
-
-    if(score>=threshold){
-            cactusSpeed+=increase;
-            threshold +=10;
-
-    }
-
-            // Move all cacti forward
-    for (int i = 0; i < cactusX.size(); ++i) {
-            cactusX[i] -= cactusSpeed;
-            cactusRects[i].x = cactusX[i];
-    }
-
-    for (int i = 0; i < birdX.size(); ++i) {
-                birdX[i] -= birdSpeed + increase + 2;
-                birdRects[i].x = birdX[i] - 175;
+            if (cactusX.empty() || cactusX.back() <= SCREEN_WIDTH - Gap) {
+                randomX= SCREEN_WIDTH;
+                cactusX.push_back(randomX); // Add a new cactus at the right edge of the screen
+                SDL_Rect cactusRect = { cactusX.back(), 440, CACTUS_WIDTH, CACTUS_HEIGHT };
+                cactusRects.push_back(cactusRect);
             }
-    }
+            else if (birdX.empty() || birdX.back() <= SCREEN_WIDTH - Gap) {
+                int birdx= SCREEN_WIDTH;
+                birdX.push_back(birdx); // Add a new bird at the right edge of the screen
+                SDL_Rect birdRect = { birdX.back() , 270, BIRD_WIDTH, BIRD_HEIGHT };
+                birdRects.push_back(birdRect);
+            }
+
+            int now = SDL_GetTicks();
+            int time = 1000;
+            int a = score/100+1;
+            if(now-lastCactus >= time){
+        // Move all cacti forward
+                for (int i = 0; i < cactusX.size(); ++i) {
+                    cactusX[i] -= 8+a ;
+                    cactusRects[i].x = cactusX[i];
+                }
+            }
+
+            int minTime = 1000; // Thời gian tối thiểu (ms) giữa các lần xuất hiện con chim
+            int maxTime = 5000; // Thời gian tối đa (ms) giữa các lần xuất hiện con chim
+            lastBird =   SDL_GetTicks();
+            int birdTime=  minTime + rand() % (maxTime - minTime + 1); ;
+
+            if(now-lastBird >= birdTime){
+                    for (int i = 0; i < birdX.size(); ++i) {
+                        birdX[i] -= 8+a;
+                        birdRects[i].x = birdX[i] ;
+            }
+            }
+
 
         graphics.renderTexture(printScore, 600, 50);
         background.scroll(10);
         graphics.presentScene();
         graphics.renderback(background);
+        t_rex.tick();
+        graphics.render(trexX, trexY, t_rex);
+
+
+        ScurrentScore = ("Score: "+ to_string(score));
+        currentScore = ScurrentScore.c_str();
+        printScore = graphics.renderText(currentScore, font, color);
 
         // Render cacti and check for collisions
         for (int i = 0; i < cactusX.size(); ++i) {
             cactus.tick();
             graphics.renderTexture(cactusTexture, cactusX[i]-20, 390);
-           drawBoundingBox(graphics.getRenderer(), cactusRects[i]);
+            drawBoundingBox(graphics.getRenderer(), cactusRects[i]);
 
             // Adjust the Y position as needed
             SDL_Rect trexRect = { trexX, trexY, T_REX_WIDTH, T_REX_HEIGHT };
             if (CheckCollision(trexRect, cactusRects[i])) {
                  graphics.play(gCrash);
-                quit = true;
+                 /*quit = true;
+                 isPlaying=false;
+                 */
+                 GameOver = true;
                  break;
             }
         }
 
          for (int i = 0; i < birdX.size(); ++i) {
             bird.bat_tick() ;
-            graphics.render(birdX[i]-220,270,bird);
+            graphics.render(birdX[i]-175,270,bird);
             drawBoundingBox(graphics.getRenderer(), birdRects[i]);
 
             // Adjust the Y position as needed
             SDL_Rect trexRect = { trexX, trexY, T_REX_WIDTH, T_REX_HEIGHT };
             if (CheckCollision(trexRect, birdRects[i])) {
                 graphics.play(gCrash);
-                quit = true;
+               /* isPlaying=false;
+                quit=true;
+                */
+                GameOver = true;
                 break;
             }
         }
+        }
 
+        SDL_Delay(50);
 
-        t_rex.tick();
-        graphics.render(trexX, trexY, t_rex);
-
-        //graphics.presentScene();
-
-        SDL_Delay(58);
-
-        ScurrentScore = ("Score: "+ to_string(score));
-        currentScore = ScurrentScore.c_str();
-        printScore = graphics.renderText(currentScore, font, color);
     }
-
-
-
     SDL_DestroyTexture(t_rexTexture);
     SDL_DestroyTexture(cactusTexture);
     SDL_DestroyTexture(birdTexture);
@@ -255,10 +305,11 @@ if(isPlaying){
     cactusTexture= nullptr;
     birdTexture = nullptr;
 
-     if (gMusic != nullptr) Mix_FreeMusic( gMusic );
+    if (gMusic != nullptr) Mix_FreeMusic( gMusic );
     if (gMusic != nullptr) Mix_FreeChunk( gJump );
     graphics.quit();
 }
 
     return 0;
 }
+
