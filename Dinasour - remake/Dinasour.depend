@@ -21,22 +21,24 @@
 	"defs.h"
 	"graphics1.h"
 
-1715500217 source:c:\users\admin\desktop\cpp\btl_game\dinasour - remake\main.cpp
+1715744473 source:c:\users\admin\desktop\cpp\btl_game\dinasour - remake\main.cpp
 	"graphics1.h"
 	"defs.h"
 	"game.h"
 
-1715482329 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\graphics1.h
+1715701000 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\graphics1.h
 	"defs.h"
 	"graphics.h"
 	<vector>
 
-1715500196 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\defs.h
+1715744473 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\defs.h
 	<iostream>
 	<cstdlib>
 	<ctime>
 	<cstring>
 	<algorithm>
+	<vector>
+	<fstream>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -45,7 +47,7 @@
 1715318020 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\graphics.h
 	"defs.h"
 
-1715497516 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\game.h
+1715742379 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\game.h
 	"defs.h"
 	"graphics1.h"
 

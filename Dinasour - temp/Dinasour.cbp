@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Dinasour" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Dinasour" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Dinasour" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="DEMO.h" />
+		<Unit filename="DEMO2.h" />
+		<Unit filename="copygra.h" />
+		<Unit filename="copymain.h" />
+		<Unit filename="defs.h" />
+		<Unit filename="ex.h" />
+		<Unit filename="game.h" />
+		<Unit filename="gameloop.h" />
+		<Unit filename="graphics.h" />
+		<Unit filename="graphics1.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="menu.h" />
+		<Unit filename="motion.h" />
+		<Unit filename="not2.h" />
+		<Unit filename="note.h" />
+		<Unit filename="note3.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
