@@ -25,22 +25,21 @@ int main(int argc, char* argv[]) {
 
 // New Game
     SDL_Texture* newGame = graphics.renderText("New Game", font2, color);
-    graphics.renderTexture(newGame, 270, 250);
+    graphics.renderTexture(newGame, 295, 250);
     SDL_Rect newGameBox = {250, 250, 250, 50};
     drawBoundingBox(graphics.getRenderer(), newGameBox);
 
 // Exit
     SDL_Texture* Exit = graphics.renderText("Exit", font2, color);
-    graphics.renderTexture(Exit, 330, 330);
+    graphics.renderTexture(Exit, 345, 330);
     SDL_Rect exitBox = {250, 330, 250, 50};
     drawBoundingBox(graphics.getRenderer(), exitBox);
 
 // Instruction
     SDL_Texture* Help = graphics.renderText("Help", font2, color);
-    graphics.renderTexture(Help, 330, 410);
+    graphics.renderTexture(Help, 345, 410);
     SDL_Rect helpBox = {250, 410, 250, 50};
     drawBoundingBox(graphics.getRenderer(), helpBox);
-
     SDL_Rect Help_newGameBox = {100, 350, 250, 50};
     SDL_Rect Help_exitBox = {530, 350, 250, 50};
 //Music cho Menu
@@ -97,7 +96,7 @@ int main(int argc, char* argv[]) {
                         graphics.renderTexture(Instruction, 50, 230);
 
                     // Hiển thị nút New Game
-                        font = graphics.loadFont("fonts/purisa.ttf", 15);
+                        font = graphics.loadFont("fonts/swan.ttf", 15);
                         graphics.renderTexture(newGame, 120, 350);
                         drawBoundingBox(graphics.getRenderer(), Help_newGameBox);
 
@@ -167,8 +166,6 @@ int main(int argc, char* argv[]) {
         const char* currentHighScore = ScurrentHighScore.c_str();
         printHighScore = graphics.renderText(currentHighScore, font, color);
 
-
-
         while (!quit) {
             //Hien thi lua chon sau khi thua
             if(GameOver){
@@ -183,7 +180,6 @@ int main(int argc, char* argv[]) {
                 SDL_Texture* AfterScore = graphics.renderText(currentScore, font, color);
                 graphics.renderTexture(AfterScore, 200, 150);
                 graphics.presentScene();
-
 
             while(SDL_PollEvent(&e)!=0){
                 if(e.type==SDL_QUIT){
@@ -203,7 +199,6 @@ int main(int argc, char* argv[]) {
                             cactusX.push_back(x_axis) ;
                             cactusRects[i].x = cactusX[i];
                             graphics.renderTexture(cactusTexture, cactusX[i], 390);
-
                     }
                         for (int i = 0; i < cloudX.size(); ++i) {
                             x_axis = SCREEN_WIDTH;
@@ -211,13 +206,11 @@ int main(int argc, char* argv[]) {
                             cloudRects[i].x = cloudX[i];
                             graphics.renderTexture(cloudTexture, cloudX[i], 330);
                     }
-
                         score=0;
                         a=0;
                         lastBird=SDL_GetTicks();
                         lastCactus=SDL_GetTicks();
                         GameOver = false;
-                        Reset = true;
                     }
 
             //Thoat game ra
@@ -227,8 +220,6 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-
-
 
 //Logic game
     else {
@@ -260,7 +251,6 @@ int main(int argc, char* argv[]) {
                     }
             }
         }
-
             if(isJumping){
                 moveUp();
                 //graphics.play(gJump);
@@ -282,7 +272,8 @@ int main(int argc, char* argv[]) {
             if(now-lastCactus >= time){
                 for (int i = 0; i < cactusX.size(); ++i) {
                     cactusX[i] -= 8+a ;
-                    cactusRects[i].x = cactusX[i]+20;
+                    cactusRects[i].x =
+                    cactusX[i]+20;
                 }
             }
 
@@ -317,7 +308,7 @@ int main(int argc, char* argv[]) {
 
         cloud.tick();
          for (int i = 0; i < cloudX.size(); ++i) {
-            graphics.render(cloudX[i] + 280*i ,328,cloud);
+            graphics.render(cloudRects[i].x ,328,cloud);
            // drawBoundingBox(graphics.getRenderer(), cloudRects[i]);
             SDL_Rect trexRect = { trexX, trexY, T_REX_WIDTH, T_REX_HEIGHT };
                 if (CheckCollision(trexRect, cloudRects[i])) {

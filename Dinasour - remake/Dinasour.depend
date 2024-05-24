@@ -21,17 +21,17 @@
 	"defs.h"
 	"graphics1.h"
 
-1715744473 source:c:\users\admin\desktop\cpp\btl_game\dinasour - remake\main.cpp
+1715757970 source:c:\users\admin\desktop\cpp\btl_game\dinasour - remake\main.cpp
 	"graphics1.h"
 	"defs.h"
 	"game.h"
 
-1715701000 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\graphics1.h
+1715760701 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\graphics1.h
 	"defs.h"
 	"graphics.h"
 	<vector>
 
-1715744473 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\defs.h
+1715754910 c:\users\admin\desktop\cpp\btl_game\dinasour - remake\defs.h
 	<iostream>
 	<cstdlib>
 	<ctime>

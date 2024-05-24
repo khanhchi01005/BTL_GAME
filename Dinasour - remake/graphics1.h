@@ -23,10 +23,8 @@ struct Sprite {
             clip.y = _clips[i][1];
             clip.w = _clips[i][2];
             clip.h = _clips[i][3];
-
             clips.push_back(clip);
         }
-
     }
     void tick() {
         int i=SDL_GetTicks();
@@ -39,7 +37,6 @@ struct Sprite {
             bird_tick =j;
             currentFrame = (currentFrame+1)% clips.size();
         }
-
     }
 
     const SDL_Rect* getCurrentClip() const {
@@ -132,7 +129,6 @@ struct Graphics {
     void renderTexture(SDL_Texture *texture, int x, int y)
     {
         SDL_Rect dest;
-
         dest.x = x;
         dest.y = y;
         SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);

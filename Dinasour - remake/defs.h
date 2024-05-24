@@ -58,8 +58,6 @@
     int trexY = SCREEN_HEIGHT-GROUND_HEIGHT-T_REX_HEIGHT;
     int dx=0,dy=0;
 
-
-
     bool GameOver = false;
     bool playgame=0;
     bool isPlaying = false;
